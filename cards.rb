@@ -1,4 +1,4 @@
-class Cards
+class Card
 	attr_reader :rank, :suit, :ID
 
 	def initialize (args)
@@ -7,19 +7,26 @@ class Cards
 		@ID =  args[:ID]
 	end
 
-	def value
-		puts ""
+	def card
+		puts "#{@card} #{@suit}"
 	end
 
+	def suit
+		puts "#{@suit}"
+	end
+
+	def value
+		put "#{card}"
+	end
 end
 
 @ID = *(1..52)
-@suits = ["Spades", "Hearts", "Diamonds", "Clubs"]
-@ranks = ["Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"]
+@suits = ["Spade", "Heart", "Diamond", "Club"]
+@ranks = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
 @deck = []
 
 @suits.each do |suit|
 	@ranks.each do |rank|
-		@deck<<Cards.new(:rank => rank, :suit => suit)
+		@deck<<Card.new(:rank => rank, :suit => suit)
 	end
 end

@@ -1,3 +1,8 @@
+class Deck
+
+end
+
+
 class Card
 	attr_reader :rank, :suit, :ID
 

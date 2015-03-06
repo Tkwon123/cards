@@ -17,18 +17,18 @@ class Deck
 	#Move the cards around
 	def shuffle
 		@cards = @cards.shuffle
-		puts "Here's the new order:"
-		@cards.each do |card|
-			print card.card
-		end
+		#puts "Here's the new order:"
+		#@cards.each do |card|
+		#	print card.card
+		#end
 	end
 
-	#Make the deck by looping through suits and ranks
+	#Make the deck by countering through suits and ranks
 	def create
-		puts "Filling with the following suits:"
-		puts "		#{@suits}"
-		puts "Filling with the following ranks:"
-		puts "		#{@ranks}"
+		#puts "Filling with the following suits:"
+		#puts "		#{@suits}"
+		#puts "Filling with the following ranks:"
+		#puts "		#{@ranks}"
 		@suits.each do |suit|
 			@ranks.each do |rank|
 				#@cards will hold all the cards in the deck
@@ -48,7 +48,7 @@ class Deck
 		@hand = Hand.new(:holding => @temparr)
 	end
 
-	#Count of current cards herea = Deck.new
+	#Count of current cards here = Deck.new
 	def count
 		puts "Deck currently holds #{@cards.count}"
 	end
@@ -90,43 +90,48 @@ class Hand < Deck #Inherits the variables within deck to keep track of cards
 	#Deal out cards
 	def initialize(args)
 		@holding = args[:holding]
-		puts "NEW HAND CREATED"
 		self.holding
 	end
 
+
 	def holding
+	counter = 1
 		@holding.each do |card|
-			puts card.card
+			print "#{counter}: "
+			print "#{card.card}"
+			counter = counter+1
 		end
 	end
 
-	def deal
-		puts "hi"
+end
+ 
+
 =begin
 		@cardsdealt.each do |x|
 			@hand << @cards.pop
 		end
 		puts @hand
 =end
-	end
+
 	#hand card from the top of the deck
 
 	#reduce the number of cards in the deck
 
 	#replace 
 
-end
 
 #Throwing down this interface for now
 puts "What would you like to do?"
 puts "1. Count cards in the deck"
 puts "2. Deal a deck" 
+puts "3. Deal your hand"
 
 response = gets.chomp.to_i
 
 #Automatically create a deck for now
 deck = Deck.new
 deck.create
+deck.shuffle
 
 case response
 
@@ -136,4 +141,5 @@ case response
 		deck.shuffle
 	when 3
 		deck.deal
+		puts "Which cards to hold?"
 end
